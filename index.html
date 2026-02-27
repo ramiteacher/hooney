@@ -39,6 +39,15 @@
     .lightbox .next{right:16px}
 
     @media (max-width:800px){.two{grid-template-columns:1fr}.top h1{font-size:21px}}
+    @media print{
+      body{background:#fff !important}
+      .wrap{max-width:none;padding:0}
+      .top{position:static !important;background:#fff !important;backdrop-filter:none !important;padding:0 0 10px}
+      .tabs{display:none}
+      .sec{box-shadow:none !important;border:1px solid #d1d5db;break-inside:avoid-page;page-break-inside:avoid}
+      .grid img,.card,img{break-inside:avoid-page;page-break-inside:avoid}
+      .lightbox{display:none !important}
+    }
   </style>
 </head>
 <body>
