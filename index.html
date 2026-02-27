@@ -9,11 +9,12 @@
     *{box-sizing:border-box}
     body{margin:0;background:linear-gradient(180deg,#eaf1ff,#ffffff);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;word-break:keep-all;line-break:loose}
     .wrap{max-width:1024px;margin:0 auto;padding:16px}
-    .top{position:sticky;top:0;background:rgba(247,248,252,.94);backdrop-filter:blur(5px);z-index:20;padding:8px 0 10px}
-    .top h1{margin:0;font-size:24px}
-    .top p{margin:4px 0 0;color:var(--muted);font-size:14px}
-    .tabs{display:flex;gap:8px;overflow:auto;white-space:nowrap;margin-top:10px}
-    .tabs a{text-decoration:none;color:#1e3a8a;background:#eef4ff;border:1px solid #bfd3ff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:800}
+    .top{position:sticky;top:0;z-index:20;padding:10px 0 12px}
+    .topbar{background:linear-gradient(135deg,#1d4ed8,#2563eb 45%,#3b82f6);border-radius:16px;padding:14px 16px;box-shadow:0 10px 24px rgba(29,78,216,.28);color:#fff}
+    .top h1{margin:0;font-size:22px;letter-spacing:.2px}
+    .top p{margin:6px 0 0;color:rgba(255,255,255,.92);font-size:13px}
+    .tabs{display:flex;gap:8px;overflow:auto;white-space:nowrap;margin-top:10px;padding-bottom:2px}
+    .tabs a{text-decoration:none;color:#1e3a8a;background:#ffffff;border:1px solid #bfd3ff;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:800;box-shadow:0 2px 8px rgba(29,78,216,.12)}
 
     .sec{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-top:12px;box-shadow:0 10px 24px rgba(29,78,216,.12)}
     .sec h2{margin:0 0 10px;font-size:20px}
@@ -43,8 +44,10 @@
 <body>
   <div class="wrap">
     <div class="top">
-      <h1>신성훈 트레이너 | 커뮤니티 피트니스 운영형 인재</h1>
-      <p>회원 관리, 프로그램 운영, 현장 리딩 경험을 갖춘 퍼스널 트레이너 포트폴리오</p>
+      <div class="topbar">
+        <h1>신성훈 트레이너 | 커뮤니티 피트니스 운영형 인재</h1>
+        <p>회원 관리 · 프로그램 운영 · 현장 리딩 경험을 갖춘 퍼스널 트레이너 포트폴리오</p>
+      </div>
       <div class="tabs">
         <a href="#basic">기본정보</a>
         <a href="#intro">자기소개</a>
