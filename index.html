@@ -5,110 +5,132 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>신성훈 트레이너 | 포트폴리오</title>
   <style>
-    :root{--bg:#f3f6fb;--card:#fff;--line:#e4e9f2;--txt:#111827;--muted:#667085;--pri:#2563eb;--shadow:0 12px 30px rgba(15,23,42,.08)}
-    *{box-sizing:border-box} html,body{height:100%}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;background:var(--bg);color:var(--txt);word-break:keep-all;line-break:loose;overflow:hidden}
-    .deck{height:100vh;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth}
-    .slide{min-width:100vw;height:100vh;padding:28px;scroll-snap-align:start;display:flex;flex-direction:column;gap:14px}
-    .head{display:flex;justify-content:space-between;align-items:center;gap:12px}
-    .title{font-size:28px;font-weight:800}
-    .sub{color:var(--muted)}
-    .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:16px;animation:fade .45s ease}
-    .fit{flex:1;min-height:0}
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
-    .grid img{width:100%;height:100%;border-radius:12px;border:1px solid var(--line);background:#fff;object-fit:cover}
-    .cert img,.award img{object-fit:contain;background:#f8fafc;padding:8px;aspect-ratio:4/3}
-    .review img{aspect-ratio:3/4}
+    :root{--bg:#f5f7fb;--card:#fff;--line:#e6ebf2;--txt:#111827;--muted:#667085;--pri:#2563eb;--pri2:#1d4ed8;--shadow:0 10px 30px rgba(2,6,23,.08)}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;background:var(--bg);color:var(--txt);word-break:keep-all;line-break:loose}
+    .wrap{max-width:1120px;margin:0 auto;padding:24px}
+    .hero{background:linear-gradient(135deg,#ffffff,#edf4ff);border:1px solid var(--line);border-radius:24px;padding:30px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.3fr .7fr;gap:16px}
+    .hero h1{margin:0 0 10px;font-size:34px;line-height:1.2}
+    .hero p{margin:0;color:#475467;line-height:1.75}
+    .badge{display:inline-block;margin-bottom:10px;background:#e9f0ff;color:var(--pri2);font-weight:700;border-radius:999px;padding:6px 12px;font-size:13px}
+    .kpi{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .kpi .box{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}
+    .kpi strong{display:block;font-size:22px;color:var(--pri2)}
+    .kpi span{font-size:13px;color:var(--muted)}
+    .section{margin-top:16px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}
+    .section h2{margin:0 0 10px;font-size:22px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .grid img{width:100%;border:1px solid var(--line);border-radius:12px;background:#fff;display:block}
+    .cert img,.award img{object-fit:contain;aspect-ratio:4/3;padding:8px;background:#f9fbff}
+    .review img{object-fit:cover;aspect-ratio:3/4}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .card{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
+    .card h3{margin:0 0 10px}
     ul{margin:8px 0 0;padding-left:18px;line-height:1.7}
-    p{line-height:1.75;color:#344054}
-    .pdf{width:100%;height:100%;border:1px solid var(--line);border-radius:12px}
-    .nav{position:fixed;right:14px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:9}
-    .dot{width:12px;height:12px;border-radius:50%;border:none;background:#cbd5e1;cursor:pointer}
-    .dot.active{background:var(--pri)}
-    .ctl{position:fixed;left:14px;bottom:14px;display:flex;gap:8px;z-index:9}
-    .btn{border:none;background:var(--pri);color:#fff;padding:10px 13px;border-radius:10px;cursor:pointer;font-weight:700}
-    @media (max-width:920px){.two{grid-template-columns:1fr}.title{font-size:24px}.slide{padding:16px}}
-    @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .resume-text p{margin:0 0 10px;color:#344054;line-height:1.85}
+    .anchor{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .anchor a{background:#fff;border:1px solid var(--line);padding:8px 12px;border-radius:10px;color:#344054;text-decoration:none;font-weight:700}
+    .anchor a:hover{border-color:#bfd2ff;color:var(--pri2)}
+    @media (max-width:900px){.hero{grid-template-columns:1fr}.hero h1{font-size:28px}.two{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <div class="deck" id="deck">
-    <section class="slide">
-      <div class="head"><div><div class="title">신성훈 트레이너 포트폴리오</div><div class="sub">프레젠테이션형 반응형 웹페이지</div></div><div class="sub">1 / 5</div></div>
-      <div class="panel fit" style="display:flex;align-items:center;justify-content:center;text-align:center;">
-        <div>
-          <h2 style="margin:0 0 8px">경력 · 전문성 · 회원성과</h2>
-          <p>이력서 전문, 자격증, 상장, 회원 후기/바디프로필을 슬라이드 형태로 구성했습니다.</p>
-          <p>좌우 스와이프(모바일) 또는 아래 버튼으로 슬라이드 이동</p>
+  <div class="wrap">
+    <section class="hero" id="top">
+      <div>
+        <span class="badge">PERSONAL TRAINER PORTFOLIO</span>
+        <h1>신성훈 트레이너</h1>
+        <p>회원의 체형·통증·목표를 바탕으로 지속 가능한 변화를 만드는 트레이닝을 지향합니다. 
+        현장 팀장 경험을 통해 회원관리, 프로그램 설계, 성과 창출까지 실무형 역량을 갖췄습니다.</p>
+        <div class="anchor">
+          <a href="#resume">이력서</a>
+          <a href="#career">학력·경력·자격</a>
+          <a href="#cert">자격증</a>
+          <a href="#award">상장</a>
+          <a href="#review">회원 후기</a>
         </div>
+      </div>
+      <div class="kpi">
+        <div class="box"><strong>7년+</strong><span>트레이닝 현장 경력</span></div>
+        <div class="box"><strong>팀장</strong><span>센터 운영/리딩 경험</span></div>
+        <div class="box"><strong>회원 맞춤</strong><span>통증·체형 기반 코칭</span></div>
+        <div class="box"><strong>성과 자료</strong><span>자격/상장/바디프로필 보유</span></div>
       </div>
     </section>
 
-    <section class="slide">
-      <div class="head"><div class="title">이력서 / 자기소개</div><div class="sub">2 / 5</div></div>
-      <div class="two fit">
-        <div class="panel">
-          <h3 style="margin:0 0 8px">핵심 요약</h3>
+    <section class="section" id="resume">
+      <h2>이력서 · 자기소개 (페이지 직접 노출)</h2>
+      <div class="two">
+        <div class="card">
+          <h3>기본 정보</h3>
           <ul>
-            <li>성명: 신성훈 / 1991-06-26</li>
+            <li>성명: 신성훈 (1991-06-26)</li>
             <li>연락처: 010-3132-9420</li>
             <li>이메일: tlstjdgns8@naver.com</li>
-            <li>복싱 경험 + 체육 전공 기반 트레이닝 전문성</li>
-            <li>팀장 경험을 통한 회원관리/성과 창출 경험</li>
+            <li>주소: 서울 서초구 반포동</li>
+            <li>병역: 군필 (의경 병장)</li>
           </ul>
-          <p>회원 케어 품질과 운동 지속 가능성을 동시에 높이는 코칭을 지향합니다.</p>
         </div>
-        <div class="panel" style="min-height:0">
-          <iframe class="pdf" src="assets/resume_1.pdf" title="이력서"></iframe>
+        <div class="card resume-text">
+          <h3>지원동기 요약</h3>
+          <p>복싱 경험과 체육 전공을 기반으로 헬스 트레이너 및 스피닝 강사로 활동하며 전문성을 쌓았습니다. 현장에서 회원 변화 사례를 만들고, 팀과 함께 운영 성과를 개선한 경험이 있습니다.</p>
+          <p>특히 허리 통증 회원 케어를 팀 교육으로 표준화해 회원 만족도와 매출 향상에 기여한 경험이 있으며, 향후 센터 운영 역량까지 확장하는 것이 목표입니다.</p>
+        </div>
+      </div>
+      <div class="card resume-text" style="margin-top:12px">
+        <h3>조직 협업 경험</h3>
+        <p>팀장 트레이너로 근무하며 팀원들과 회원 케어 프로세스를 공유하고, 통증 예방/관리 중심의 운동 프로그램을 구축했습니다. 소통 기반 협업을 통해 회원 맞춤 트레이닝 품질을 개선했습니다.</p>
+        <h3 style="margin-top:12px">향후 커리어 목표</h3>
+        <p>지속적인 실무 역량 강화와 고객 만족 중심의 코칭으로 안정적 성과를 만드는 트레이너로 성장하고, 장기적으로 센터 운영 역량까지 갖춘 전문가가 되는 것이 목표입니다.</p>
+      </div>
+    </section>
+
+    <section class="section" id="career">
+      <h2>학력 · 경력 · 자격</h2>
+      <div class="two">
+        <div class="card">
+          <h3>학력 / 경력</h3>
+          <ul>
+            <li>용인대학교 사회체육 (2017.02~2018.02, 수료)</li>
+            <li>비휘트니스 (2017.02~2019.02) / 팀장</li>
+            <li>JM휘트니스 (2019.02~2021.02) / 트레이너</li>
+            <li>헬스보이짐 고속터미널점 (2021.03~2022.03) / 팀장</li>
+            <li>서초포레 커뮤니티 (2024.02~2026.01) / 팀장</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>자격</h3>
+          <ul>
+            <li>생활체육 2급 보디빌딩</li>
+            <li>NASM CES</li>
+            <li>피사프</li>
+            <li>카이로프랙틱</li>
+            <li>산업안전산업기사 / 가스기사</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <section class="slide">
-      <div class="head"><div class="title">자격증</div><div class="sub">3 / 5</div></div>
-      <div class="panel fit cert" style="overflow:auto">
-        <div class="grid">
-          <img src="assets/cert_01.png" alt="자격증 1"><img src="assets/cert_02.png" alt="자격증 2"><img src="assets/cert_03.jpg" alt="자격증 3"><img src="assets/cert_04.jpg" alt="자격증 4"><img src="assets/cert_05.jpg" alt="자격증 5"><img src="assets/cert_06.jpg" alt="자격증 6">
-        </div>
+    <section class="section cert" id="cert">
+      <h2>자격증 자료</h2>
+      <div class="grid">
+        <img src="assets/cert_01.png" alt="자격증 1"><img src="assets/cert_02.png" alt="자격증 2"><img src="assets/cert_03.jpg" alt="자격증 3"><img src="assets/cert_04.jpg" alt="자격증 4"><img src="assets/cert_05.jpg" alt="자격증 5"><img src="assets/cert_06.jpg" alt="자격증 6">
       </div>
     </section>
 
-    <section class="slide">
-      <div class="head"><div class="title">성과 / 상장</div><div class="sub">4 / 5</div></div>
-      <div class="panel fit award" style="overflow:auto">
-        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
-          <img src="assets/award_01.jpg" alt="상장 1"><img src="assets/award_02.jpg" alt="상장 2">
-        </div>
+    <section class="section award" id="award">
+      <h2>상장 · 성과 자료</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+        <img src="assets/award_01.jpg" alt="상장 1"><img src="assets/award_02.jpg" alt="상장 2">
       </div>
     </section>
 
-    <section class="slide">
-      <div class="head"><div class="title">회원 후기 · 바디프로필</div><div class="sub">5 / 5</div></div>
-      <div class="panel fit review" style="overflow:auto">
-        <div class="grid">
-          <img src="assets/review_01.jpg" alt="리뷰 1"><img src="assets/review_02.jpg" alt="리뷰 2"><img src="assets/review_03.jpg" alt="리뷰 3"><img src="assets/review_04.jpg" alt="리뷰 4"><img src="assets/review_05.jpg" alt="리뷰 5"><img src="assets/review_06.jpg" alt="리뷰 6"><img src="assets/review_07.jpg" alt="리뷰 7"><img src="assets/review_08.jpg" alt="리뷰 8"><img src="assets/review_09.jpg" alt="리뷰 9"><img src="assets/review_10.jpg" alt="리뷰 10"><img src="assets/review_11.jpg" alt="리뷰 11"><img src="assets/review_12.jpg" alt="리뷰 12"><img src="assets/review_13.jpg" alt="리뷰 13"><img src="assets/review_14.jpg" alt="리뷰 14"><img src="assets/review_15.jpg" alt="리뷰 15"><img src="assets/review_16.jpg" alt="리뷰 16"><img src="assets/review_17.jpg" alt="리뷰 17">
-        </div>
+    <section class="section review" id="review">
+      <h2>회원 후기 · 바디프로필</h2>
+      <div class="grid">
+        <img src="assets/review_01.jpg" alt="리뷰 1"><img src="assets/review_02.jpg" alt="리뷰 2"><img src="assets/review_03.jpg" alt="리뷰 3"><img src="assets/review_04.jpg" alt="리뷰 4"><img src="assets/review_05.jpg" alt="리뷰 5"><img src="assets/review_06.jpg" alt="리뷰 6"><img src="assets/review_07.jpg" alt="리뷰 7"><img src="assets/review_08.jpg" alt="리뷰 8"><img src="assets/review_09.jpg" alt="리뷰 9"><img src="assets/review_10.jpg" alt="리뷰 10"><img src="assets/review_11.jpg" alt="리뷰 11"><img src="assets/review_12.jpg" alt="리뷰 12"><img src="assets/review_13.jpg" alt="리뷰 13"><img src="assets/review_14.jpg" alt="리뷰 14"><img src="assets/review_15.jpg" alt="리뷰 15"><img src="assets/review_16.jpg" alt="리뷰 16"><img src="assets/review_17.jpg" alt="리뷰 17">
       </div>
     </section>
   </div>
-
-  <div class="nav" id="nav"></div>
-  <div class="ctl"><button class="btn" id="prev">◀ 이전</button><button class="btn" id="next">다음 ▶</button></div>
-
-  <script>
-    const deck = document.getElementById('deck');
-    const slides = [...document.querySelectorAll('.slide')];
-    const nav = document.getElementById('nav');
-    slides.forEach((_,i)=>{const b=document.createElement('button');b.className='dot';b.onclick=()=>go(i);nav.appendChild(b)});
-    const dots=[...document.querySelectorAll('.dot')];
-    let idx=0;
-    function paint(){dots.forEach((d,i)=>d.classList.toggle('active',i===idx));}
-    function go(i){idx=Math.max(0,Math.min(slides.length-1,i));deck.scrollTo({left:idx*window.innerWidth,behavior:'smooth'});paint();}
-    document.getElementById('prev').onclick=()=>go(idx-1);
-    document.getElementById('next').onclick=()=>go(idx+1);
-    deck.addEventListener('scroll',()=>{idx=Math.round(deck.scrollLeft/window.innerWidth);paint();});
-    paint();
-  </script>
 </body>
 </html>
