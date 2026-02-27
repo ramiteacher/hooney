@@ -31,8 +31,11 @@
     .zoomable{cursor:zoom-in}
     .lightbox{position:fixed;inset:0;background:rgba(2,6,23,.82);display:none;align-items:center;justify-content:center;padding:18px;z-index:1000}
     .lightbox.open{display:flex}
-    .lightbox img{max-width:95vw;max-height:92vh;border-radius:12px;border:2px solid #fff;background:#fff}
+    .lightbox img{width:auto !important;height:auto !important;max-width:95vw;max-height:92vh;object-fit:contain;border-radius:12px;border:2px solid #fff;background:#fff}
     .lightbox .close{position:absolute;top:16px;right:18px;background:#fff;border:none;border-radius:999px;padding:6px 10px;font-weight:800;cursor:pointer}
+    .lightbox .navbtn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.95);border:none;border-radius:999px;width:38px;height:38px;font-size:20px;font-weight:800;cursor:pointer}
+    .lightbox .prev{left:16px}
+    .lightbox .next{right:16px}
 
     @media (max-width:800px){.two{grid-template-columns:1fr}.top h1{font-size:21px}}
   </style>
@@ -146,20 +149,30 @@
 
   <div class="lightbox" id="lightbox" aria-hidden="true">
     <button class="close" id="lightboxClose">닫기 ✕</button>
+    <button class="navbtn prev" id="lightboxPrev" aria-label="이전 이미지">‹</button>
     <img id="lightboxImg" alt="확대 이미지" />
+    <button class="navbtn next" id="lightboxNext" aria-label="다음 이미지">›</button>
   </div>
 
   <script>
     const lightbox = document.getElementById('lightbox');
     const lightboxImg = document.getElementById('lightboxImg');
     const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+    const imgs = [...document.querySelectorAll('.zoomable')];
+    let current = 0;
 
-    document.querySelectorAll('.zoomable').forEach(img => {
-      img.addEventListener('click', () => {
-        lightboxImg.src = img.src;
-        lightbox.classList.add('open');
-        lightbox.setAttribute('aria-hidden','false');
-      });
+    const showAt = (idx) => {
+      current = (idx + imgs.length) % imgs.length;
+      lightboxImg.src = imgs[current].src;
+      lightboxImg.alt = imgs[current].alt || '확대 이미지';
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden','false');
+    };
+
+    imgs.forEach((img, i) => {
+      img.addEventListener('click', () => showAt(i));
     });
 
     const closeLightbox = () => {
@@ -168,12 +181,22 @@
       lightboxImg.src = '';
     };
 
-    closeBtn.addEventListener('click', closeLightbox);
+    const prev = (e) => { if(e) e.stopPropagation(); showAt(current - 1); };
+    const next = (e) => { if(e) e.stopPropagation(); showAt(current + 1); };
+
+    closeBtn.addEventListener('click', (e)=>{e.stopPropagation(); closeLightbox();});
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+
     lightbox.addEventListener('click', (e) => {
       if (e.target === lightbox) closeLightbox();
     });
+
     document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prev();
+      if (e.key === 'ArrowRight') next();
     });
   </script>
 </body>
