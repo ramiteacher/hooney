@@ -5,118 +5,92 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>신성훈 트레이너 | 포트폴리오</title>
   <style>
-    :root{--bg:#f4f7fb;--card:#fff;--line:#e4e9f2;--txt:#111827;--muted:#667085;--pri:#2563eb;--shadow:0 10px 28px rgba(2,6,23,.08)}
+    :root{--bg:#f5f7fb;--card:#fff;--line:#e5eaf2;--txt:#111827;--muted:#667085;--pri:#2563eb}
     *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;background:var(--bg);color:var(--txt);word-break:keep-all;line-break:loose;overflow:hidden}
-
-    .deck{height:100vh;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth}
-    .slide{min-width:100vw;height:100vh;padding:16px;scroll-snap-align:start;display:flex;flex-direction:column;gap:10px}
-    .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);padding:14px}
-    .fit{flex:1;min-height:0;overflow:auto}
-    .head{display:flex;justify-content:space-between;align-items:end;gap:10px}
-    .head h2{margin:0;font-size:24px}
-    .head .sub{color:var(--muted);font-size:14px}
-
-    .resume-wrap{height:100%;display:flex;align-items:center;justify-content:center}
-    .resume-wrap img{max-width:100%;max-height:100%;width:auto;height:auto;border:1px solid var(--line);border-radius:10px;background:#fff}
-
-    .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .card{border:1px solid var(--line);border-radius:12px;padding:12px;background:#fff}
-    ul{margin:8px 0 0;padding-left:18px;line-height:1.7}
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
-    .grid img{width:100%;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
-    .cert img,.award img{object-fit:contain;aspect-ratio:4/3;padding:8px;background:#f8fbff}
+    body{margin:0;background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;word-break:keep-all;line-break:loose}
+    .wrap{max-width:980px;margin:0 auto;padding:14px}
+    .top{position:sticky;top:0;z-index:20;background:rgba(245,247,251,.94);backdrop-filter:blur(4px);padding:8px 0 10px}
+    .nav{display:flex;gap:8px;overflow:auto;white-space:nowrap}
+    .nav a{display:inline-block;text-decoration:none;color:#334155;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 12px;font-size:14px;font-weight:700}
+    .sec{margin-top:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px}
+    h1{margin:0 0 4px;font-size:24px}
+    h2{margin:0 0 8px;font-size:19px}
+    p{margin:0;color:var(--muted);line-height:1.7}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+    img{width:100%;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
+    .resume img{border-radius:12px}
+    .cert img,.award img{object-fit:contain;aspect-ratio:4/3;padding:6px;background:#f8fbff}
     .review img{object-fit:cover;aspect-ratio:3/4}
-
-    .ctl{position:fixed;left:12px;bottom:12px;display:flex;gap:8px;z-index:10}
-    .btn{border:none;background:var(--pri);color:#fff;padding:10px 12px;border-radius:10px;font-weight:700;cursor:pointer}
-    .nav{position:fixed;right:12px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:8px;z-index:10}
-    .dot{width:11px;height:11px;border-radius:50%;border:none;background:#cbd5e1;cursor:pointer}
-    .dot.active{background:var(--pri)}
-
-    @media (max-width:900px){.two{grid-template-columns:1fr}.head h2{font-size:20px}}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .card{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff}
+    ul{margin:8px 0 0;padding-left:18px;line-height:1.7}
+    @media (max-width:760px){.two{grid-template-columns:1fr} h1{font-size:21px}}
   </style>
 </head>
 <body>
-  <div class="deck" id="deck">
-    <section class="slide">
-      <div class="head"><h2>이력서 원본</h2><div class="sub">1 / 4</div></div>
-      <div class="panel fit resume-wrap">
-        <img src="assets/resume_page_1.jpg" alt="이력서 원본" />
+  <div class="wrap">
+    <div class="top">
+      <h1>신성훈 트레이너 포트폴리오</h1>
+      <p>모바일 최적화 버전</p>
+      <div class="nav">
+        <a href="#resume">이력서</a>
+        <a href="#career">학력·경력·자격</a>
+        <a href="#cert">자격증</a>
+        <a href="#award">상장</a>
+        <a href="#review">회원 후기</a>
       </div>
+    </div>
+
+    <section class="sec resume" id="resume">
+      <h2>이력서 원본</h2>
+      <img src="assets/resume_page_1.jpg" alt="이력서 원본" />
     </section>
 
-    <section class="slide">
-      <div class="head"><h2>학력 · 경력 · 자격 요약</h2><div class="sub">2 / 4</div></div>
-      <div class="panel fit two">
+    <section class="sec" id="career">
+      <h2>학력 · 경력 · 자격 요약</h2>
+      <div class="two">
         <div class="card">
-          <h3 style="margin:0">학력 / 경력</h3>
+          <b>학력 / 경력</b>
           <ul>
-            <li>용인대학교 사회체육 (2017.02~2018.02, 수료)</li>
-            <li>비휘트니스 (2017.02~2019.02) / 팀장</li>
-            <li>JM휘트니스 (2019.02~2021.02) / 트레이너</li>
-            <li>헬스보이짐 고속터미널점 (2021.03~2022.03) / 팀장</li>
-            <li>서초포레 커뮤니티 (2024.02~2026.01) / 팀장</li>
+            <li>용인대학교 사회체육 (수료)</li>
+            <li>비휘트니스 팀장</li>
+            <li>JM휘트니스 트레이너</li>
+            <li>헬스보이짐 고속터미널점 팀장</li>
+            <li>서초포레 커뮤니티 팀장</li>
           </ul>
         </div>
         <div class="card">
-          <h3 style="margin:0">보유 자격</h3>
+          <b>자격</b>
           <ul>
             <li>생활체육 2급 보디빌딩</li>
-            <li>NASM CES</li>
-            <li>피사프</li>
-            <li>카이로프랙틱 (듀나미스)</li>
-            <li>산업안전산업기사</li>
-            <li>가스기사</li>
+            <li>NASM CES / 피사프</li>
+            <li>카이로프랙틱(듀나미스)</li>
+            <li>산업안전산업기사 / 가스기사</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <section class="slide">
-      <div class="head"><h2>자격증 · 상장</h2><div class="sub">3 / 4</div></div>
-      <div class="panel fit cert" style="margin-bottom:10px">
-        <h3 style="margin:0 0 8px">자격증</h3>
-        <div class="grid">
-          <img src="assets/cert_01.png" alt="자격증 1"><img src="assets/cert_02.png" alt="자격증 2"><img src="assets/cert_03.jpg" alt="자격증 3"><img src="assets/cert_04.jpg" alt="자격증 4"><img src="assets/cert_05.jpg" alt="자격증 5"><img src="assets/cert_06.jpg" alt="자격증 6">
-        </div>
-      </div>
-      <div class="panel award">
-        <h3 style="margin:0 0 8px">상장 / 성과</h3>
-        <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
-          <img src="assets/award_01.jpg" alt="상장 1"><img src="assets/award_02.jpg" alt="상장 2">
-        </div>
+    <section class="sec cert" id="cert">
+      <h2>자격증</h2>
+      <div class="grid">
+        <img src="assets/cert_01.png" alt="자격증 1"><img src="assets/cert_02.png" alt="자격증 2"><img src="assets/cert_03.jpg" alt="자격증 3"><img src="assets/cert_04.jpg" alt="자격증 4"><img src="assets/cert_05.jpg" alt="자격증 5"><img src="assets/cert_06.jpg" alt="자격증 6">
       </div>
     </section>
 
-    <section class="slide">
-      <div class="head"><h2>회원 후기 · 바디프로필</h2><div class="sub">4 / 4</div></div>
-      <div class="panel fit review">
-        <div class="grid">
-          <img src="assets/review_01.jpg" alt="리뷰 1"><img src="assets/review_02.jpg" alt="리뷰 2"><img src="assets/review_03.jpg" alt="리뷰 3"><img src="assets/review_04.jpg" alt="리뷰 4"><img src="assets/review_05.jpg" alt="리뷰 5"><img src="assets/review_06.jpg" alt="리뷰 6"><img src="assets/review_07.jpg" alt="리뷰 7"><img src="assets/review_08.jpg" alt="리뷰 8"><img src="assets/review_09.jpg" alt="리뷰 9"><img src="assets/review_10.jpg" alt="리뷰 10"><img src="assets/review_11.jpg" alt="리뷰 11"><img src="assets/review_12.jpg" alt="리뷰 12"><img src="assets/review_13.jpg" alt="리뷰 13"><img src="assets/review_14.jpg" alt="리뷰 14"><img src="assets/review_15.jpg" alt="리뷰 15"><img src="assets/review_16.jpg" alt="리뷰 16"><img src="assets/review_17.jpg" alt="리뷰 17">
-        </div>
+    <section class="sec award" id="award">
+      <h2>상장 · 성과 자료</h2>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+        <img src="assets/award_01.jpg" alt="상장 1"><img src="assets/award_02.jpg" alt="상장 2">
+      </div>
+    </section>
+
+    <section class="sec review" id="review">
+      <h2>회원 후기 · 바디프로필</h2>
+      <div class="grid">
+        <img src="assets/review_01.jpg" alt="리뷰 1"><img src="assets/review_02.jpg" alt="리뷰 2"><img src="assets/review_03.jpg" alt="리뷰 3"><img src="assets/review_04.jpg" alt="리뷰 4"><img src="assets/review_05.jpg" alt="리뷰 5"><img src="assets/review_06.jpg" alt="리뷰 6"><img src="assets/review_07.jpg" alt="리뷰 7"><img src="assets/review_08.jpg" alt="리뷰 8"><img src="assets/review_09.jpg" alt="리뷰 9"><img src="assets/review_10.jpg" alt="리뷰 10"><img src="assets/review_11.jpg" alt="리뷰 11"><img src="assets/review_12.jpg" alt="리뷰 12"><img src="assets/review_13.jpg" alt="리뷰 13"><img src="assets/review_14.jpg" alt="리뷰 14"><img src="assets/review_15.jpg" alt="리뷰 15"><img src="assets/review_16.jpg" alt="리뷰 16"><img src="assets/review_17.jpg" alt="리뷰 17">
       </div>
     </section>
   </div>
-
-  <div class="ctl"><button class="btn" id="prev">◀ 이전</button><button class="btn" id="next">다음 ▶</button></div>
-  <div class="nav" id="nav"></div>
-
-  <script>
-    const deck = document.getElementById('deck');
-    const slides = [...document.querySelectorAll('.slide')];
-    const nav = document.getElementById('nav');
-    slides.forEach((_,i)=>{const b=document.createElement('button');b.className='dot';b.onclick=()=>go(i);nav.appendChild(b)});
-    const dots=[...document.querySelectorAll('.dot')];
-    let idx=0;
-    const paint=()=>dots.forEach((d,i)=>d.classList.toggle('active',i===idx));
-    const go=(i)=>{idx=Math.max(0,Math.min(slides.length-1,i));deck.scrollTo({left:idx*window.innerWidth,behavior:'smooth'});paint();};
-    document.getElementById('prev').onclick=()=>go(idx-1);
-    document.getElementById('next').onclick=()=>go(idx+1);
-    deck.addEventListener('scroll',()=>{idx=Math.round(deck.scrollLeft/window.innerWidth);paint();});
-    paint();
-  </script>
 </body>
 </html>
