@@ -17,7 +17,7 @@
       --radius:16px;
     }
     *{box-sizing:border-box}
-    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text)}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text);word-break:keep-all;overflow-wrap:break-word;line-break:loose}
     .wrap{max-width:1140px;margin:0 auto;padding:24px}
     .hero{background:linear-gradient(120deg,#fff,#f4f8ff);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow);animation:fadeUp .5s ease}
     h1{margin:0 0 10px;font-size:30px}
@@ -35,7 +35,8 @@
     .grid img{width:100%;height:100%;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#fff;transition:.25s}
     .grid img:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(2,6,23,.12)}
     .review-grid img{aspect-ratio:3/4}
-    .cert-grid img{aspect-ratio:4/3}
+    .cert-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+    .cert-grid img{aspect-ratio:4/3;object-fit:contain;padding:8px;background:#f8fafc}
 
     .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media (max-width:900px){.two{grid-template-columns:1fr}}
@@ -81,7 +82,7 @@
             <li><b>주소</b>: 서울 서초구 반포동</li>
             <li><b>병역</b>: 군필 (의경 병장)</li>
           </ul>
-          <p><a class="btn" href="assets/resume_1.pdf" target="_blank" rel="noopener">이력서 PDF 원문 열기</a></p>
+          <p style="color:#667085">아래에 이력서 PDF를 바로 표시했습니다.</p>
         </div>
         <div class="box">
           <h3>자기소개 요약</h3>
