@@ -28,6 +28,11 @@
     img{width:100%;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
     .cert img,.award img{object-fit:contain;aspect-ratio:4/3;padding:6px;background:#f8fbff}
     .review img{object-fit:cover;aspect-ratio:3/4}
+    .zoomable{cursor:zoom-in}
+    .lightbox{position:fixed;inset:0;background:rgba(2,6,23,.82);display:none;align-items:center;justify-content:center;padding:18px;z-index:1000}
+    .lightbox.open{display:flex}
+    .lightbox img{max-width:95vw;max-height:92vh;border-radius:12px;border:2px solid #fff;background:#fff}
+    .lightbox .close{position:absolute;top:16px;right:18px;background:#fff;border:none;border-radius:999px;padding:6px 10px;font-weight:800;cursor:pointer}
 
     @media (max-width:800px){.two{grid-template-columns:1fr}.top h1{font-size:21px}}
   </style>
@@ -120,23 +125,56 @@
     <section id="cert" class="sec cert">
       <h2>자격증 이미지</h2>
       <div class="grid">
-        <img src="assets/cert_01.png" alt="자격증 1" loading="lazy"><img src="assets/cert_02.png" alt="자격증 2" loading="lazy"><img src="assets/cert_03.jpg" alt="자격증 3" loading="lazy"><img src="assets/cert_04.jpg" alt="자격증 4" loading="lazy"><img src="assets/cert_05.jpg" alt="자격증 5" loading="lazy"><img src="assets/cert_06.jpg" alt="자격증 6" loading="lazy">
+        <img class="zoomable" src="assets/cert_01.png" alt="자격증 1" loading="lazy"><img class="zoomable" src="assets/cert_02.png" alt="자격증 2" loading="lazy"><img class="zoomable" src="assets/cert_03.jpg" alt="자격증 3" loading="lazy"><img class="zoomable" src="assets/cert_04.jpg" alt="자격증 4" loading="lazy"><img class="zoomable" src="assets/cert_05.jpg" alt="자격증 5" loading="lazy"><img class="zoomable" src="assets/cert_06.jpg" alt="자격증 6" loading="lazy">
       </div>
     </section>
 
     <section id="award" class="sec award">
       <h2>상장 · 성과 자료</h2>
       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
-        <img src="assets/award_01.jpg" alt="상장 1" loading="lazy"><img src="assets/award_02.jpg" alt="상장 2" loading="lazy">
+        <img class="zoomable" src="assets/award_01.jpg" alt="상장 1" loading="lazy"><img class="zoomable" src="assets/award_02.jpg" alt="상장 2" loading="lazy">
       </div>
     </section>
 
     <section id="review" class="sec review">
       <h2>회원 후기 · 바디프로필</h2>
       <div class="grid">
-        <img src="assets/review_01.jpg" alt="리뷰 1" loading="lazy"><img src="assets/review_02.jpg" alt="리뷰 2" loading="lazy"><img src="assets/review_03.jpg" alt="리뷰 3" loading="lazy"><img src="assets/review_04.jpg" alt="리뷰 4" loading="lazy"><img src="assets/review_05.jpg" alt="리뷰 5" loading="lazy"><img src="assets/review_06.jpg" alt="리뷰 6" loading="lazy"><img src="assets/review_07.jpg" alt="리뷰 7" loading="lazy"><img src="assets/review_08.jpg" alt="리뷰 8" loading="lazy"><img src="assets/review_09.jpg" alt="리뷰 9" loading="lazy"><img src="assets/review_10.jpg" alt="리뷰 10" loading="lazy"><img src="assets/review_11.jpg" alt="리뷰 11" loading="lazy"><img src="assets/review_12.jpg" alt="리뷰 12" loading="lazy"><img src="assets/review_13.jpg" alt="리뷰 13" loading="lazy"><img src="assets/review_14.jpg" alt="리뷰 14" loading="lazy"><img src="assets/review_15.jpg" alt="리뷰 15" loading="lazy"><img src="assets/review_16.jpg" alt="리뷰 16" loading="lazy"><img src="assets/review_17.jpg" alt="리뷰 17" loading="lazy">
+        <img class="zoomable" src="assets/review_01.jpg" alt="리뷰 1" loading="lazy"><img class="zoomable" src="assets/review_02.jpg" alt="리뷰 2" loading="lazy"><img class="zoomable" src="assets/review_03.jpg" alt="리뷰 3" loading="lazy"><img class="zoomable" src="assets/review_04.jpg" alt="리뷰 4" loading="lazy"><img class="zoomable" src="assets/review_05.jpg" alt="리뷰 5" loading="lazy"><img class="zoomable" src="assets/review_06.jpg" alt="리뷰 6" loading="lazy"><img class="zoomable" src="assets/review_07.jpg" alt="리뷰 7" loading="lazy"><img class="zoomable" src="assets/review_08.jpg" alt="리뷰 8" loading="lazy"><img class="zoomable" src="assets/review_09.jpg" alt="리뷰 9" loading="lazy"><img class="zoomable" src="assets/review_10.jpg" alt="리뷰 10" loading="lazy"><img class="zoomable" src="assets/review_11.jpg" alt="리뷰 11" loading="lazy"><img class="zoomable" src="assets/review_12.jpg" alt="리뷰 12" loading="lazy"><img class="zoomable" src="assets/review_13.jpg" alt="리뷰 13" loading="lazy"><img class="zoomable" src="assets/review_14.jpg" alt="리뷰 14" loading="lazy"><img class="zoomable" src="assets/review_15.jpg" alt="리뷰 15" loading="lazy"><img class="zoomable" src="assets/review_16.jpg" alt="리뷰 16" loading="lazy"><img class="zoomable" src="assets/review_17.jpg" alt="리뷰 17" loading="lazy">
       </div>
     </section>
   </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="close" id="lightboxClose">닫기 ✕</button>
+    <img id="lightboxImg" alt="확대 이미지" />
+  </div>
+
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+
+    document.querySelectorAll('.zoomable').forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightbox.classList.add('open');
+        lightbox.setAttribute('aria-hidden','false');
+      });
+    });
+
+    const closeLightbox = () => {
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden','true');
+      lightboxImg.src = '';
+    };
+
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
 </body>
 </html>
