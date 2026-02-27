@@ -5,61 +5,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>신성훈 트레이너 | 포트폴리오</title>
   <style>
-    :root { --bg:#0b1020; --card:#141a2e; --txt:#eef2ff; --muted:#aab3d6; --acc:#6ea8fe; }
-    * { box-sizing:border-box; }
-    body { margin:0; font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif; background:linear-gradient(180deg,#0b1020,#090d1b); color:var(--txt); }
-    .wrap { max-width:1100px; margin:0 auto; padding:24px; }
-    .hero { background:var(--card); border-radius:18px; padding:24px; margin-bottom:18px; }
-    h1,h2 { margin:0 0 10px; }
-    p { color:var(--muted); margin:8px 0; line-height:1.6; }
-    .btn { display:inline-block; background:var(--acc); color:#081028; text-decoration:none; font-weight:700; padding:10px 14px; border-radius:12px; margin-top:8px; }
-    .grid { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); }
-    .card { background:var(--card); border-radius:16px; padding:14px; }
-    img { width:100%; height:100%; object-fit:cover; border-radius:12px; display:block; }
-    .cert-grid img { aspect-ratio: 4/3; }
-    .review-grid img { aspect-ratio: 3/4; }
-    footer { color:var(--muted); text-align:center; padding:20px 0 10px; font-size:14px; }
+    :root{
+      --bg:#f6f8fc;
+      --card:#ffffff;
+      --line:#e7ebf3;
+      --text:#1f2937;
+      --muted:#667085;
+      --primary:#2563eb;
+      --primary-soft:#eaf1ff;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+      --radius:16px;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Noto Sans KR',sans-serif;background:var(--bg);color:var(--text)}
+    .wrap{max-width:1140px;margin:0 auto;padding:24px}
+    .hero{background:linear-gradient(120deg,#fff,#f4f8ff);border:1px solid var(--line);border-radius:22px;padding:26px;box-shadow:var(--shadow);animation:fadeUp .5s ease}
+    h1{margin:0 0 10px;font-size:30px}
+    .sub{color:var(--muted);line-height:1.6}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+    .chip{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 11px;font-size:13px;color:#475467}
+
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 12px}
+    .tab{border:none;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:700;color:#344054;transition:.2s}
+    .tab.active{background:var(--primary);border-color:var(--primary);color:#fff;transform:translateY(-1px)}
+
+    .panel{display:none;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow);animation:fadeUp .35s ease}
+    .panel.active{display:block}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .grid img{width:100%;height:100%;object-fit:cover;border-radius:12px;border:1px solid var(--line);background:#fff;transition:.25s}
+    .grid img:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(2,6,23,.12)}
+    .review-grid img{aspect-ratio:3/4}
+    .cert-grid img{aspect-ratio:4/3}
+
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media (max-width:900px){.two{grid-template-columns:1fr}}
+
+    .box{border:1px solid var(--line);border-radius:12px;padding:14px;background:#fff}
+    .box h3{margin:0 0 10px;font-size:17px}
+    .box ul{margin:0;padding-left:18px;line-height:1.7}
+    .box p{margin:8px 0;color:#475467;line-height:1.7}
+    .btn{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;padding:10px 14px;border-radius:10px;font-weight:700}
+    iframe{width:100%;min-height:560px;border:1px solid var(--line);border-radius:12px;background:#fff}
+    footer{text-align:center;color:var(--muted);padding:18px 0 6px;font-size:14px}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <section class="hero">
       <h1>신성훈 트레이너 포트폴리오</h1>
-      <p>회원 바디프로필/리뷰, 매출 관련 상장 자료, 이력서 파일을 기반으로 구성한 반응형 웹페이지입니다.</p>
-      <p>모바일/태블릿/PC에서 자동으로 레이아웃이 맞춰집니다.</p>
-      <a class="btn" href="assets/resume_1.pdf" target="_blank" rel="noopener">이력서(PDF) 보기</a>
+      <div class="sub">회원 후기/바디프로필, 자격·성과 자료, 이력서 전문을 반영한 반응형 포트폴리오입니다.</div>
+      <div class="chips">
+        <span class="chip">경력 7년+</span>
+        <span class="chip">팀장 경력 보유</span>
+        <span class="chip">회원 맞춤 운동 설계</span>
+        <span class="chip">재활·체형교정 관심</span>
+      </div>
     </section>
 
-    <section class="card">
-      <h2>자격/성과 자료</h2>
-      <p>매출 관련 상장 자료</p>
-      <div class="grid cert-grid"><img src="assets/cert_1.jpg" alt="상장 1">
-<img src="assets/cert_2.jpg" alt="상장 2"></div>
+    <div class="tabs">
+      <button class="tab active" data-tab="resume">이력서·자기소개</button>
+      <button class="tab" data-tab="career">학력·경력·자격</button>
+      <button class="tab" data-tab="cert">성과/상장</button>
+      <button class="tab" data-tab="review">회원 후기·바디프로필</button>
+    </div>
+
+    <section id="resume" class="panel active">
+      <div class="two">
+        <div class="box">
+          <h3>기본 정보</h3>
+          <ul>
+            <li><b>성명</b>: 신성훈 (1991-06-26)</li>
+            <li><b>연락처</b>: 010-3132-9420</li>
+            <li><b>이메일</b>: tlstjdgns8@naver.com</li>
+            <li><b>주소</b>: 서울 서초구 반포동</li>
+            <li><b>병역</b>: 군필 (의경 병장)</li>
+          </ul>
+          <p><a class="btn" href="assets/resume_1.pdf" target="_blank" rel="noopener">이력서 PDF 원문 열기</a></p>
+        </div>
+        <div class="box">
+          <h3>자기소개 요약</h3>
+          <p>복싱 경험과 체육 전공 기반으로 헬스트레이너 및 스피닝 강사 경력을 쌓았고, 센터 팀장으로 회원 만족도·매출 성과를 함께 만든 경험이 있습니다.</p>
+          <p>허리 통증 회원 케어 등 실제 현장 문제를 팀 교육으로 표준화해 회원 프로그램 품질을 끌어올렸으며, 향후 센터 운영 역량까지 확장하는 것이 목표입니다.</p>
+          <p>근면·책임·협업을 기반으로 회원의 지속 가능한 변화를 만드는 트레이너를 지향합니다.</p>
+        </div>
+      </div>
+      <div style="margin-top:12px">
+        <iframe src="assets/resume_1.pdf" title="이력서 PDF"></iframe>
+      </div>
     </section>
 
-    <section class="card" style="margin-top:14px;">
-      <h2>회원 후기 · 바디프로필</h2>
-      <p>회원 변화 사례 및 후기 이미지</p>
-      <div class="grid review-grid"><img src="assets/review_01.jpg" alt="회원 후기 1">
-<img src="assets/review_02.jpg" alt="회원 후기 2">
-<img src="assets/review_03.jpg" alt="회원 후기 3">
-<img src="assets/review_04.jpg" alt="회원 후기 4">
-<img src="assets/review_05.jpg" alt="회원 후기 5">
-<img src="assets/review_06.jpg" alt="회원 후기 6">
-<img src="assets/review_07.jpg" alt="회원 후기 7">
-<img src="assets/review_08.jpg" alt="회원 후기 8">
-<img src="assets/review_09.jpg" alt="회원 후기 9">
-<img src="assets/review_10.jpg" alt="회원 후기 10">
-<img src="assets/review_11.jpg" alt="회원 후기 11">
-<img src="assets/review_12.jpg" alt="회원 후기 12">
-<img src="assets/review_13.jpg" alt="회원 후기 13">
-<img src="assets/review_14.jpg" alt="회원 후기 14">
-<img src="assets/review_15.jpg" alt="회원 후기 15">
-<img src="assets/review_16.jpg" alt="회원 후기 16">
-<img src="assets/review_17.jpg" alt="회원 후기 17"></div>
+    <section id="career" class="panel">
+      <div class="two">
+        <div class="box">
+          <h3>학력</h3>
+          <ul>
+            <li>용인대학교 사회체육 (2017.02 ~ 2018.02, 수료)</li>
+          </ul>
+
+          <h3 style="margin-top:14px">주요 경력</h3>
+          <ul>
+            <li>비휘트니스 (2017.02 ~ 2019.02) / 팀장</li>
+            <li>JM휘트니스 (2019.02 ~ 2021.02) / 트레이너</li>
+            <li>헬스보이짐 고속터미널점 (2021.03 ~ 2022.03) / 팀장</li>
+            <li>서초포레 커뮤니티 (2024.02 ~ 2026.01) / 팀장</li>
+          </ul>
+        </div>
+        <div class="box">
+          <h3>자격·면허</h3>
+          <ul>
+            <li>생활체육 2급 보디빌딩 (문화체육부장관)</li>
+            <li>NASM CES</li>
+            <li>피사프</li>
+            <li>카이로프랙틱</li>
+            <li>산업안전산업기사</li>
+            <li>가스기사</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="cert" class="panel">
+      <div class="box">
+        <h3>매출/성과 관련 상장 자료</h3>
+        <div class="grid cert-grid">
+          <img src="assets/cert_1.jpg" alt="성과 상장 1">
+          <img src="assets/cert_2.jpg" alt="성과 상장 2">
+        </div>
+      </div>
+    </section>
+
+    <section id="review" class="panel">
+      <div class="box">
+        <h3>회원 후기 · 바디프로필</h3>
+        <div class="grid review-grid">
+          <img src="assets/review_01.jpg" alt="리뷰 1"><img src="assets/review_02.jpg" alt="리뷰 2"><img src="assets/review_03.jpg" alt="리뷰 3"><img src="assets/review_04.jpg" alt="리뷰 4"><img src="assets/review_05.jpg" alt="리뷰 5"><img src="assets/review_06.jpg" alt="리뷰 6"><img src="assets/review_07.jpg" alt="리뷰 7"><img src="assets/review_08.jpg" alt="리뷰 8"><img src="assets/review_09.jpg" alt="리뷰 9"><img src="assets/review_10.jpg" alt="리뷰 10"><img src="assets/review_11.jpg" alt="리뷰 11"><img src="assets/review_12.jpg" alt="리뷰 12"><img src="assets/review_13.jpg" alt="리뷰 13"><img src="assets/review_14.jpg" alt="리뷰 14"><img src="assets/review_15.jpg" alt="리뷰 15"><img src="assets/review_16.jpg" alt="리뷰 16"><img src="assets/review_17.jpg" alt="리뷰 17">
+        </div>
+      </div>
     </section>
 
     <footer>© 신성훈 트레이너 포트폴리오</footer>
   </div>
+
+  <script>
+    const tabs = document.querySelectorAll('.tab');
+    const panels = document.querySelectorAll('.panel');
+    tabs.forEach(t => t.addEventListener('click', () => {
+      tabs.forEach(x => x.classList.remove('active'));
+      panels.forEach(x => x.classList.remove('active'));
+      t.classList.add('active');
+      document.getElementById(t.dataset.tab).classList.add('active');
+      window.scrollTo({top: document.querySelector('.tabs').offsetTop - 10, behavior: 'smooth'});
+    }));
+  </script>
 </body>
 </html>
